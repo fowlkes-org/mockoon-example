@@ -7,8 +7,8 @@ This example shows a simplified client making http calls to various mocked calls
 
 ## Possible Processes with Mockoon
 
-1. UI developers are able to mock out API to develop against 
-2. webapps and mobile clients can implement mockoon for UI tests, to stabilize environment concerns, rapidly iterate on feature toggled experiments, and ensure the UI flow works, over having to test with the entire dependency of all microservices and infrastructure in a shared environment.
+1. UI developers are able to mock out API to develop components without explicit backend dependency
+2. Webapps and mobile clients can implement mockoon for UI tests, to stabilize environment concerns, rapidly iterate on feature toggled experiments, and ensure the UI flow works, over having to test with the entire dependency of all microservices and infrastructure in a shared environment.
 3. Creates high fidelity feedback at a PR possible, without having to deal with complex test data management for live data environment configurations.
 
 
