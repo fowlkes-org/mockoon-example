@@ -1,7 +1,7 @@
 name: mockoon testing
 on: [push, pull_request]
 jobs:
-  Explore-GitHub-Actions:
+  Mockoon-Mocked-Tests:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
