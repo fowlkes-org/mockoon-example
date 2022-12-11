@@ -1,8 +1,10 @@
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: RunnerDeployment
 metadata:
-  name: cpf-runnerdeploy
+  name: cpf-runner-deploy
+  namespace: default
 spec:
+  replicas: 0
   template:
     spec:
       #repository: fowlkes-org/mockoon-example
@@ -17,7 +19,7 @@ spec:
     kind: RunnerDeployment
     # # In case the scale target is RunnerSet:
     # kind: RunnerSet
-    name: cpf-runner-deployment
+    name: cpf-runner-deploy
   minReplicas: 1
   maxReplicas: 15
   metrics:
