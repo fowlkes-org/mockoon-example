@@ -13,3 +13,19 @@ This example shows a simplified client making http calls to various mocked calls
 
 
 
+## CICD with Ephemeral GHA Runners
+1. install cert-manager
+```
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.8.2/cert-manager.yaml
+```
+2. deploy and configure ARC
+```
+helm repo add actions-runner-controller https://actions-runner-controller.github.io/actions-runner-controller
+
+helm upgrade --install --namespace actions-runner-system --create-namespace --set=authSecret.create=true --set=authSecret.github_token="<token>" --wait actions-runner-controller actions-runner-controller/actions-runner-controller
+```
+3. create GHA self hosted runners
+```
+cd k8s
+kubectl apply -f runnerdeployment.yaml
+```

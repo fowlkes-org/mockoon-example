@@ -14,7 +14,6 @@ kind: HorizontalRunnerAutoscaler
 metadata:
   name: cpf-runner-deployment-autoscaler
 spec:
-  scaleDownDelaySecondsAfterScaleOut: 300
   scaleTargetRef:
     kind: RunnerDeployment
     # # In case the scale target is RunnerSet:
@@ -22,7 +21,6 @@ spec:
     name: cpf-runner-deploy
   minReplicas: 5
   maxReplicas: 15
-  scaleDownDelaySecondsAfterScaleUp: 60
   metrics:
     - type: TotalNumberOfQueuedAndInProgressWorkflowRuns
       repositoryNames:

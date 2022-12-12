@@ -14,14 +14,14 @@ kind: HorizontalRunnerAutoscaler
 metadata:
   name: cpf-runner-deployment-autoscaler
 spec:
-  scaleDownDelaySecondsAfterScaleOut: 300
+  scaleDownDelaySecondsAfterScaleOut: 60
   scaleTargetRef:
     kind: RunnerDeployment
     # # In case the scale target is RunnerSet:
     # kind: RunnerSet
     name: cpf-runner-deploy
-  minReplicas: 1
-  maxReplicas: 15
+  minReplicas: 10
+  maxReplicas: 20
   metrics:
     - type: PercentageRunnersBusy
       scaleUpThreshold: "0.75" # The percentage of busy runners at which the number of desired runners are re-evaluated to scale up
