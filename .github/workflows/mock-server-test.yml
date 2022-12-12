@@ -24,6 +24,9 @@ jobs:
       - name: run number value ${{ matrix.version }}
         run: ls
 
+      - name: wait 8 minutes to trigger scaling at 10 minute minimum
+        run: sleep 8m
+
       - name: Check out repository code
         uses: actions/checkout@v3
 

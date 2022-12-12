@@ -20,8 +20,9 @@ spec:
     # # In case the scale target is RunnerSet:
     # kind: RunnerSet
     name: cpf-runner-deploy
-  minReplicas: 1
+  minReplicas: 5
   maxReplicas: 15
+  scaleDownDelaySecondsAfterScaleUp: 60
   metrics:
     - type: TotalNumberOfQueuedAndInProgressWorkflowRuns
       repositoryNames:
