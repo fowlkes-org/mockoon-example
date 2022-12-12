@@ -20,8 +20,8 @@ spec:
     # # In case the scale target is RunnerSet:
     # kind: RunnerSet
     name: cpf-runner-deploy
-  minReplicas: 10
-  maxReplicas: 20
+  minReplicas: 5
+  maxReplicas: 25
   metrics:
     - type: PercentageRunnersBusy
       scaleUpThreshold: "0.75" # The percentage of busy runners at which the number of desired runners are re-evaluated to scale up

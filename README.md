@@ -29,3 +29,7 @@ helm upgrade --install --namespace actions-runner-system --create-namespace --se
 cd k8s
 kubectl apply -f runnerdeployment.yaml
 ```
+
+### GHA Runers Notes
+https://github.com/actions-runner-controller/actions-runner-controller/blob/master/docs/detailed-docs.md#organization-runners
+https://github.com/actions-runner-controller/actions-runner-controller/blob/master/docs/detailed-docs.md#deploying-using-pat-authentication
