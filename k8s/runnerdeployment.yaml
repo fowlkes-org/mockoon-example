@@ -1,0 +1,30 @@
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: cpf-runner-deploy
+  namespace: default
+spec:
+  template:
+    spec:
+      #repository: fowlkes-org/mockoon-example
+      organization: fowlkes-org
+---
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: HorizontalRunnerAutoscaler
+metadata:
+  name: cpf-runner-deployment-autoscaler
+spec:
+  scaleDownDelaySecondsAfterScaleOut: 60
+  scaleTargetRef:
+    kind: RunnerDeployment
+    # # In case the scale target is RunnerSet:
+    # kind: RunnerSet
+    name: cpf-runner-deploy
+  minReplicas: 5
+  maxReplicas: 25
+  metrics:
+    - type: PercentageRunnersBusy
+      scaleUpThreshold: "0.75" # The percentage of busy runners at which the number of desired runners are re-evaluated to scale up
+      scaleDownThreshold: "0.3" # The percentage of busy runners at which the number of desired runners are re-evaluated to scale down
+      scaleUpFactor: "1.4" # The scale up multiplier factor applied to desired count
+      scaleDownFactor: "0.7" # The scale down multiplier factor applied to desired count

@@ -1,0 +1,28 @@
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: cpf-runner-deploy
+  namespace: default
+spec:
+  template:
+    spec:
+      #repository: fowlkes-org/mockoon-example
+      organization: fowlkes-org
+---
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: HorizontalRunnerAutoscaler
+metadata:
+  name: cpf-runner-deployment-autoscaler
+spec:
+  scaleTargetRef:
+    kind: RunnerDeployment
+    # # In case the scale target is RunnerSet:
+    # kind: RunnerSet
+    name: cpf-runner-deploy
+  minReplicas: 5
+  maxReplicas: 15
+  metrics:
+    - type: TotalNumberOfQueuedAndInProgressWorkflowRuns
+      repositoryNames:
+        # A repository name is the REPO part of `github.com/OWNER/REPO`
+        - mockoon
